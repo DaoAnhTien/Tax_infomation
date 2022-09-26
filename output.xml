@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.7.5 on win32)" generated="20220923 12:01:51.418" rpa="true" schemaversion="2">
+<suite id="s1" name="Tasks" source="d:\RPA\Taxt_Infomation\gdt-lookup-company-info_1.2.15\tasks.robot">
+<test id="s1-t1" name="Lookup Company Info From GDT">
+<kw name="Get In Arg" library="DOP.RPA.ProcessArgument">
+<var>${TAX_CODE}</var>
+<arg>sellerTaxCode</arg>
+<msg timestamp="20220923 12:01:52.634" level="INFO">Resolving path: devdata\args.json</msg>
+<msg timestamp="20220923 12:01:52.640" level="FAIL">KeyError: 'sellerTaxCode'</msg>
+<status status="FAIL" starttime="20220923 12:01:52.634" endtime="20220923 12:01:52.640"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\nLookup Company Info of TaxCode: ${TAX_CODE}\n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.641" endtime="20220923 12:01:52.641"/>
+</kw>
+<kw name="Get In Arg" library="DOP.RPA.ProcessArgument">
+<var>${MAX_RETRY_TURNS}</var>
+<arg>maxRetry</arg>
+<status status="NOT RUN" starttime="20220923 12:01:52.642" endtime="20220923 12:01:52.642"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\nMax Retry: ${MAX_RETRY_TURNS}\n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.642" endtime="20220923 12:01:52.642"/>
+</kw>
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>http://tracuunnt.gdt.gov.vn/tcnnt/mstdn.jsp</arg>
+<arg>maximized=True</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.642" endtime="20220923 12:01:52.642"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>//input[@name="mst"]</arg>
+<arg>${TAX_CODE}[value]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.643" endtime="20220923 12:01:52.643"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${RESULT}</var>
+<arg>False</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.643" endtime="20220923 12:01:52.643"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>${MAX_RETRY_TURNS}[value]</value>
+<iter>
+<var name="${i}">${i}</var>
+<kw name="Trying To Resolve GdtCaptcha">
+<arg>${i}</arg>
+<status status="NOT RUN" starttime="20220923 12:01:52.643" endtime="20220923 12:01:52.643"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${RESULT}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>//table[@class="ta_border"]</arg>
+<arg>timeout=1</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.644" endtime="20220923 12:01:52.644"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${RESULT}</arg>
+<doc>Stops executing the enclosing for loop if the ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.644" endtime="20220923 12:01:52.644"/>
+</kw>
+<status status="NOT RUN" starttime="20220923 12:01:52.643" endtime="20220923 12:01:52.644"/>
+</iter>
+<status status="NOT RUN" starttime="20220923 12:01:52.643" endtime="20220923 12:01:52.644"/>
+</for>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\nResult: ${RESULT}\n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.644" endtime="20220923 12:01:52.644"/>
+</kw>
+<kw name="Remove Files" library="RPA.FileSystem">
+<arg>gdtCompanyInfoScreenshot.png</arg>
+<doc>Removes multiple files.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.645" endtime="20220923 12:01:52.645"/>
+</kw>
+<kw name="Click Element" library="RPA.Browser.Selenium">
+<arg>//*[@id="tcmst"]/table/tbody/tr[2]/td[3]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.645" endtime="20220923 12:01:52.645"/>
+</kw>
+<kw name="Execute Javascript" library="RPA.Browser.Selenium">
+<arg>window.scrollTo(0, 2000)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.645" endtime="20220923 12:01:52.645"/>
+</kw>
+<kw name="Capture Element Screenshot" library="RPA.Browser.Selenium">
+<arg>id:body</arg>
+<arg>d:\\RPA\\Taxt_Infomation\\gdt-lookup-company-info_1.2.15${/}output${/}gdtCompanyInfoScreenshot.png</arg>
+<doc>Captures a screenshot from the element identified by ``locator`` and embeds it into log file.</doc>
+<status status="NOT RUN" starttime="20220923 12:01:52.646" endtime="20220923 12:01:52.646"/>
+</kw>
+<kw name="Set Out Arg" library="DOP.RPA.ProcessArgument">
+<arg>result</arg>
+<arg>${RESULT}</arg>
+<status status="NOT RUN" starttime="20220923 12:01:52.646" endtime="20220923 12:01:52.646"/>
+</kw>
+<kw name="Set Out Arg" library="DOP.RPA.ProcessArgument">
+<arg>gdtCompanyInfoScreenshot</arg>
+<arg>output/gdtCompanyInfoScreenshot.png</arg>
+<status status="NOT RUN" starttime="20220923 12:01:52.646" endtime="20220923 12:01:52.646"/>
+</kw>
+<status status="FAIL" starttime="20220923 12:01:52.633" endtime="20220923 12:01:52.647">KeyError: 'sellerTaxCode'</status>
+</test>
+<doc>Robot to solve the first challenge at rpachallenge.com, which consists of
+filling a form that randomly rearranges itself for ten times, with data
+taken from a provided Microsoft Excel file.</doc>
+<status status="FAIL" starttime="20220923 12:01:51.424" endtime="20220923 12:01:52.648"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

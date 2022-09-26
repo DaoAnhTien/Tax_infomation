@@ -1,0 +1,28 @@
+tasks:
+  Run all tasks:
+    shell: python -m robot --report NONE --outputdir output --logtitle "Task log" tasks.robot
+argument:
+  input:
+    - name: orgTaxCode
+      type: String
+      required: True
+      defaultValue: 
+      description: Tax infomation
+    - name: outPutDemo 
+      type: String
+      required: True
+      defaultvalue: 
+      description: Dữ liệu ra
+    - name: webTax 
+      type: String
+      required: True
+      defaultvalue: 
+      description: web Tax 
+condaConfigFile: conda.yaml
+artifactsDir: output
+PATH:
+  - .
+PYTHONPATH:
+  - .
+ignoreFiles:
+  - .gitignore

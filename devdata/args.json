@@ -1,0 +1,30 @@
+{
+    "webTax": {
+        "name": "webTax",
+        "type": "String",
+        "direction": "IN",
+        "value": "http://tracuunnt.gdt.gov.vn/tcnnt/mstdn.jsp",
+        "required": true
+    },
+    "orgTaxCode": {
+        "name": "orgTaxCode",
+        "type": "Int",
+        "direction": "IN",
+        "value": "0401356807",
+        "required": true
+    },
+    "maxretry": {
+        "name": "maxretry",
+        "type": "Int",
+        "direction": "IN",
+        "value": "20",
+        "required": true
+    },
+    "OutputData": {
+        "name": "OutputData",
+        "type": "String",
+        "direction": "OUT",
+        "value": "{'TaxCode': '0401356807', 'name': 'CÔNG TY CỔ PHẦN V.B.P.O', 'address': 'Tầng 20, Toà nhà Software Park, Số 02 Quang Trung - Phường Thạch Thang - Quận Hải Châu - Đà Nẵng.', 'date': '11/05/2010'}",
+        "required": true
+    }
+}
